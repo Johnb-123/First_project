@@ -1,0 +1,65 @@
+#Guess the number project, i also added a lottery game winning a prize.
+'''
+This is my very first project
+to work on in Python. I want
+the user to guess a number between
+1 - 20 and the output to be high and
+low. Correct when they get it correct
+'''
+
+import random
+
+#Guessing Game
+high = 0
+low = 0
+correct = 0 
+guess_number = random.randint(1,20)
+your_guess = 0
+
+#Lottery Game
+higher = 10
+lower = 0
+winner = 0
+lottery_number = random.randint(1,10)
+lottery_guess = 0 
+guesses = 3
+
+prize_list = ["Holiday", "Car", "New Wardrobe", "Game Console", 
+             "Washing machine", "Box of Chocolates"]
+
+#Guessing Game
+while your_guess != guess_number:
+    your_guess = int(input("Guess a Number: ")) #Include 5 attempts.  
+    if your_guess > guess_number:
+        print("Too High")
+        high += 1
+    elif your_guess < guess_number:
+        print("Too Low")
+        low +=1
+    else:
+        print("You got the Number correct, good on you")
+        correct += 1
+        if your_guess == guess_number:
+            print("You have now entered the lottery for a prize...")
+            print()
+            print()
+            print("Welcome to the Lottery,\nplease pick a number between 1-10"
+                  "\nYou have 3 attempts!")        
+#Lottery Game, if Guessing Game is correct.    
+        while lottery_guess != lottery_number:
+            lottery_guess = int(input("Choose a lottery number: ")) 
+            guesses -=1
+            if guesses == 0:
+                print('You are out of guesses. You now have to start over!')
+                break  # When this happens, we need to start over!!
+            if lottery_guess > lottery_number:
+                print('lower')
+                lower -= 1 #This area is not calculating correctly 
+            elif lottery_guess < lottery_number:
+                print('Higher')
+                higher += 1 #This area is also not calculating correctly
+            else:
+                print("""Congradulations,You have won a {}"""
+                      .format(random.choice(prize_list)))
+              
+print()
